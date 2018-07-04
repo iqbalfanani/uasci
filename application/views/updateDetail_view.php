@@ -73,7 +73,7 @@
 		  </div>
 		  <div class="panel-body">
 		  	<?php echo validation_errors(); ?>
-		  	<?php echo form_open_multipart('Detail/update'); ?>
+		  	<?php echo form_open_multipart('Detail/update/'.$getData['id']); ?>
 			<!-- Drop Down input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="fk_id_kelas">Nama Kelas</label>  

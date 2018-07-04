@@ -44,11 +44,12 @@ class Detail extends CI_Controller {
 		$data['getRelasiKelas'] = $this->DetailModel->getRelasiKelas();
 		
 		$data['getRelasiMurid'] = $this->DetailModel->getRelasiMurid();
+		$data['getData'] = $this->DetailModel->getDataWhereId($id)[0];
 
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('updateDetail_view', $data);
 		} else {
-			$this->DetailModel->updateData();
+			$this->DetailModel->updateData($id);
 			redirect('detail');
 		}
 	}
