@@ -11,10 +11,11 @@ class Detail extends CI_Controller {
 	}
 	public function insert()
 	{
+		$this->load->library('form_validation');
 		$this->load->model('DetailModel');
 		$this->form_validation->set_rules('fk_id_kelas', 'Nama Kelas', 'trim|required');
 		$this->form_validation->set_rules('fk_id_murid', 'Nama Murid', 'trim|required');
-		$this->form_validation->set_rules('fk_id_mapel', 'fieldlabel', 'trim|required');
+		$this->form_validation->set_rules('fk_id_mapel', 'Mapel', 'trim|required');
 
 		$data['getRelasiMapel'] = $this->DetailModel->getRelasiMapel();
 
@@ -33,6 +34,30 @@ class Detail extends CI_Controller {
 	public function update($id)
 	{
 		$this->load->library('form_validation');
+		$this->load->model('DetailModel');
+		$this->form_validation->set_rules('fk_id_kelas', 'Nama Kelas', 'trim|required');
+		$this->form_validation->set_rules('fk_id_murid', 'Nama Murid', 'trim|required');
+		$this->form_validation->set_rules('fk_id_mapel', 'Mapel', 'trim|required');
+
+		$data['getRelasiMapel'] = $this->DetailModel->getRelasiMapel();
+
+		$data['getRelasiKelas'] = $this->DetailModel->getRelasiKelas();
+		
+		$data['getRelasiMurid'] = $this->DetailModel->getRelasiMurid();
+
+		if($this->form_validation->run() == FALSE) {
+			$this->load->view('updateDetail_view', $data);
+		} else {
+			$this->DetailModel->updateData();
+			redirect('detail');
+		}
+	}
+
+	public function delete($id)
+	{
+		$this->load->model('DetailModel');
+		$this->DetailModel->hapusData($id);
+		redirect('detail');
 	}
 
 }

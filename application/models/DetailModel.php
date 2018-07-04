@@ -4,16 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class DetailModel extends CI_Model {
 
 	public function getDataDetail()
-		{
-			$this->db->select('detail_kelas.*,kelas.nama_kelas,murid.nama_murid,mapel.nama_mapel');
-			$this->db->from('detail_kelas');
-			$this->db->join('kelas','detail_kelas.fk_id_kelas=kelas.id');
-			$this->db->join('murid','detail_kelas.fk_id_murid=murid.id');
-			$this->db->join('mapel','detail_kelas.fk_id_mapel=mapel.id');
-			$query = $this->db->get();
-			return $query->result_array();
+	{
+		$this->db->select('detail_kelas.*,kelas.nama_kelas,murid.nama_murid,mapel.nama_mapel');
+		$this->db->from('detail_kelas');
+		$this->db->join('kelas','detail_kelas.fk_id_kelas=kelas.id');
+		$this->db->join('murid','detail_kelas.fk_id_murid=murid.id');
+		$this->db->join('mapel','detail_kelas.fk_id_mapel=mapel.id');
+		$query = $this->db->get();
+		return $query->result_array();
 
-		}	
+	}	
 
 	public function insertData()
 	{
@@ -36,8 +36,30 @@ class DetailModel extends CI_Model {
 		return $this->db->get('murid')->result_array();
 	}
 
+	public function getDataWhereId($id)
+	{
+		$this->db->select('*');
+		$this->db->from("detail_kelas");
+		$this->db->where('id',$id);
+		return $this->db->get()->result_array();
+	}
 
+	public function updateData($id)	
+	{
+		$data = $this->input->post();
+		$this->db->where('id',$id);
+		if($this->db->update("detail_kelas",$data)){
+			return "Berhasil";
+		}
+	}
 
+	public function hapusData($id)
+	{
+		$this->db->where('id',$id);
+		if($this->db->delete("detail_kelas")){
+			return "Berhasil";
+		}
+	}
 }
 
 /* End of file detailModel.php */

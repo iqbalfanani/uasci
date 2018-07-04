@@ -28,7 +28,6 @@
             <li class="active">Welcome, <?php echo $this->session->userdata('logged_in')['username']; ?></a></li>
             <li><a href="<?php echo base_url() ?>index.php/Login/logout">Logout</a></li>
           </ul>
-          
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -70,72 +69,58 @@
       <div class="col-md-9">
 		<div class="panel panel-default">
 		  <div class="panel-heading"style="background-color:  #1E8BC3;">
-		    <h3 class="panel-title">Detail Mata pelajaran</h3>
+		    <h3 class="panel-title">Tambah Detail Mapel</h3>
 		  </div>
 		  <div class="panel-body">
-		  <a href="<?php echo base_url() ?>index.php/Detail/insert" class="btn btn-primary my-3">Tambah</a> <br><br>
-        <!-- line modal -->
-        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-              <h3 class="modal-title" id="lineModalLabel">Tambah Detail Baru</h3>
-            </div>
-            <div class="modal-body">
-              
-                    <!-- content goes here -->
-              <form>
-                        <div class="form-group">
-                          <label for="nama">Nama Kelas</label>                      
-                          <input id="nama" name="nama" type="text" placeholder="Masukkan nama" class="form-control input-md" required="">
-                        </div>
+		  	<?php echo validation_errors(); ?>
+		  	<?php echo form_open_multipart('Detail/update'); ?>
+			<!-- Drop Down input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_kelas">Nama Kelas</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_kelas" id="fk_id_kelas" class="form-control" value="<?php echo $getData['nama_kelas'] ?>" >
+					<?php foreach ($getRelasiKelas as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['nama_kelas'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
 
-                        <div class="form-group">
-                          <label for="kapasitas">Nama Murid</label>                      
-                          <input id="kapasitas" name="kapasitas" type="text" placeholder="Masukkan kapasitas" class="form-control input-md" required="">
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                          <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-                          </div>
-                          <div class="btn-group btn-delete hidden" role="group">
-                            <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                          </div>
-                          <div class="btn-group" role="group">
-                            <button href="<?php echo base_url() ?>index.php/Detail/insert" type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-		    <table class="table table-striped table-hover" id="table_id">
-		      <thead>
-            <th>ID</th>
-            <th>NAMA KELAS</th>
-            <th>NAMA MURID</th>
-            <th>MAPEL</th>
-            <th>AKSI</th>
-          </thead>
-          <tbody>
-            <?php foreach ($detail_list as $key => $value):?>
-            <tr>
-              <td><?php echo $value['id'] ?></td>
-              <td><?php echo $value['nama_kelas'] ?></td>
-              <td><?php echo $value['nama_murid'] ?></td>
-              <td><?php echo $value['nama_mapel']; ?></td>
-              <td>
-		      <a href="<?php echo base_url() ?>index.php/Detail/update/<?php echo $value['id'] ?>" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span>
-          <a href="<?php echo base_url() ?>index.php/Detail/delete/<?php echo $value['id'] ?>"class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span>
-		          </td>
-		        </tr>
-		      <?php endforeach ?>
-		      </tbody>
-		    </table>
+			<!-- Drop Down input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_murid">Nama Murid</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_murid" id="fk_id_murid" class="form-control" value="<?php echo $getData['nama_murid'] ?>">
+					<?php foreach ($getRelasiMurid as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['nama_murid'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
 
+			<!-- Drop Down input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_mapel">Mapel</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_mapel" id="fk_id_mapel" class="form-control" value="<?php echo $getData['nama_mapel'] ?>">
+					<?php foreach ($getRelasiMapel as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['nama_mapel'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="confirmation"></label>
+			  <div class="col-md-5">
+			    <button id="confirmation" class="btn btn-primary">Submit</button>
+			  </div>
+			</div>
+			<?php echo form_close(); ?>
 		  </div>
 		</div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
