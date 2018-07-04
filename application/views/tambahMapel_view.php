@@ -55,7 +55,7 @@
                               <a href="<?php echo base_url() ?>index.php/Kelas/index" class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span>  Kelas</a>
                               <a href="<?php echo base_url() ?>index.php/Ruang/index" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  Ruang</a>
                               <a href="<?php echo base_url() ?>index.php/Detail/index" class="list-group-item"><span class="glyphicon glyphicon-zoom-in"></span>  Detail</a>
-                              <a href="<?php echo base_url() ?>index.php/User/index" class="list-group-item"><span class="glyphicon glyphicon-cog"></span>  User</a>
+                              <a href="<?php echo base_url() ?>index.php/User/index" class="list-group-item"><span class="glyphicon glyphicon-dashboard"></span>  User</a>
                             </div> 
        
                     </div>
@@ -70,14 +70,14 @@
       <div class="col-md-9">
 		<div class="panel panel-default">
 		  <div class="panel-heading"style="background-color:  #1E8BC3;">
-		    <h3 class="panel-title">Tambah Kelas Baru</h3>
+		    <h3 class="panel-title">Tambah Mapel Baru</h3>
 		  </div>
 		  <div class="panel-body">
-		  	<?php echo form_open_multipart('Kelas/insert'); ?>
+		  	<?php echo form_open_multipart('Mapel/insert'); ?>
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="nama">Nama Kelas</label>  
+				<label class="col-md-4 control-label" for="nama">Nama Mapel</label>  
 				<div class="col-md-5">
-			  <input id="nama" name="nama_kelas" type="text" placeholder="Nama Kelas" class="form-control input-md" required="">
+			  <input id="nama" name="nama_mapel" type="text" placeholder="Nama Mapel" class="form-control input-md" required="">
 			  </div>
 			</div><br><br>
 			
