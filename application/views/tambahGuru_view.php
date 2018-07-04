@@ -24,10 +24,9 @@
         </div>
        
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index">Welcome, Madhav</a></li>
-            <li><a href="login.html">Logout</a></li>
-          
+           <ul class="nav navbar-nav navbar-right">
+            <li class="active">Welcome, <?php echo $this->session->userdata('logged_in')['username']; ?></a></li>
+            <li><a href="<?php echo base_url() ?>index.php/Login/logout">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

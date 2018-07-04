@@ -25,9 +25,8 @@
        
 
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index">Welcome, Madhav</a></li>
-            <li><a href="login.html">Logout</a></li>
-          
+            <li class="active">Welcome, <?php echo $this->session->userdata('logged_in')['username']; ?></a></li>
+            <li><a href="<?php echo base_url() ?>index.php/Login/logout">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -70,7 +69,7 @@
       <div class="col-md-9">
 		<div class="panel panel-default">
 		  <div class="panel-heading"style="background-color:  #1E8BC3;">
-		    <h3 class="panel-title">Tambah Mata Pelajaran</h3>
+		    <h3 class="panel-title">Tambah Detail Mapel</h3>
 		  </div>
 		  <div class="panel-body">
 		  	<?php echo validation_errors(); ?>
