@@ -68,56 +68,17 @@
           </div>
       </div>
       <div class="col-md-9">
-		<div class="panel panel-default">
-		  <div class="panel-heading"style="background-color:  #1E8BC3;">
-		    <h3 class="panel-title">Detail Mata pelajaran</h3>
-		  </div>
-		  <div class="panel-body">
-		  <a href="<?php echo base_url() ?>index.php/Detail/insert" class="btn btn-primary my-3">Tambah</a> <br><br>
-        <!-- line modal -->
-        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-              <h3 class="modal-title" id="lineModalLabel">Tambah Detail Baru</h3>
-            </div>
-            <div class="modal-body">
-              
-                    <!-- content goes here -->
-              <form>
-                        <div class="form-group">
-                          <label for="nama">Nama Kelas</label>                      
-                          <input id="nama" name="nama" type="text" placeholder="Masukkan nama" class="form-control input-md" required="">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="kapasitas">Nama Murid</label>                      
-                          <input id="kapasitas" name="kapasitas" type="text" placeholder="Masukkan kapasitas" class="form-control input-md" required="">
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                          <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-                          </div>
-                          <div class="btn-group btn-delete hidden" role="group">
-                            <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                          </div>
-                          <div class="btn-group" role="group">
-                            <button href="<?php echo base_url() ?>index.php/Detail/insert" type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-		    <table class="table table-striped table-hover" id="table_id">
-		      <thead>
+    <div class="panel panel-default">
+      <div class="panel-heading"style="background-color:  #1E8BC3;">
+        <h3 class="panel-title">Detail Mata pelajaran</h3>
+      </div>
+      <div class="panel-body">
+      <!-- <a href="<?php echo base_url() ?>index.php/Detail/insert" class="btn btn-primary my-3">Tambah</a> <br><br> -->
+        <table class="table table-striped table-hover" id="table_id">
+          <thead>
             <th>ID</th>
             <th>NAMA KELAS</th>
             <th>NAMA MURID</th>
-            <th>MAPEL</th>
             <th>AKSI</th>
           </thead>
           <tbody>
@@ -126,18 +87,17 @@
               <td><?php echo $value['id'] ?></td>
               <td><?php echo $value['nama_kelas'] ?></td>
               <td><?php echo $value['nama_murid'] ?></td>
-              <td><?php echo $value['nama_mapel']; ?></td>
               <td>
-		      <a href="<?php echo base_url() ?>index.php/Detail/update/<?php echo $value['id'] ?>" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span>
+          <a href="<?php echo base_url() ?>index.php/Detail/update/<?php echo $value['id'] ?>" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span>
           <a href="<?php echo base_url() ?>index.php/Detail/delete/<?php echo $value['id'] ?>"class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span>
-		          </td>
-		        </tr>
-		      <?php endforeach ?>
-		      </tbody>
-		    </table>
+              </td>
+            </tr>
+          <?php endforeach ?>
+          </tbody>
+        </table>
 
-		  </div>
-		</div>
+      </div>
+    </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

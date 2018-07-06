@@ -5,11 +5,10 @@ class DetailModel extends CI_Model {
 
 	public function getDataDetail()
 	{
-		$this->db->select('detail_kelas.*,kelas.nama_kelas,murid.nama_murid,mapel.nama_mapel');
+		$this->db->select('detail_kelas.*,kelas.nama_kelas,murid.nama_murid');
 		$this->db->from('detail_kelas');
 		$this->db->join('kelas','detail_kelas.fk_id_kelas=kelas.id');
 		$this->db->join('murid','detail_kelas.fk_id_murid=murid.id');
-		$this->db->join('mapel','detail_kelas.fk_id_mapel=mapel.id');
 		$query = $this->db->get();
 		return $query->result_array();
 

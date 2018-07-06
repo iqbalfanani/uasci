@@ -52,7 +52,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('telp', 'No Handphone', 'trim|required');
 		$this->form_validation->set_rules('jenisKelamin', 'Jenis Kelamin', 'trim|required');
 		$this->form_validation->set_rules('jenjang', 'Jenjang', 'trim|required');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]|min_length[4]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 	
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
