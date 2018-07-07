@@ -14,6 +14,12 @@ class DetailModel extends CI_Model {
 
 	}	
 
+	public function jumlah_kelas_per_siswa($id_murid)
+	{
+		$this->db->where('fk_id_murid',$id_murid);
+		$query = $this->db->get('detail_kelas');
+		return $query->num_rows();
+	}
 	public function insertData()
 	{
 		$data = $this->input->post();

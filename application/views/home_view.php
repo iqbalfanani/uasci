@@ -332,8 +332,11 @@
 							<?php if ($this->session->userdata('logged_in') == null): ?>
 						<li><a href="<?php echo site_url(); ?>/login/index" data-toggle="modal" class="btn btn-white-fill">Login</a></li>
 						<?php else: ?>
+							<?php if ($jumlah_kelas >= 1): ?>
+								<li><a href="#" class="btn btn-white-fill">Anda Sudah Memilih Kelas</a></li>
+							<?php else: ?>
 						<li><a href="<?php echo site_url(); ?>/pesan/index" class="btn btn-white-fill">Pesan</a></li>
-
+<?php endif ?>
 					<?php endif ?>
 							<!-- <a href="<?php echo site_url(); ?>/login/index"  data-target="#modal1" class="btn btn-white-fill">Login</a> -->
 							<i class="info-icon icon_question"></i>

@@ -5,7 +5,11 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('home_view');
+		$this->load->model('DetailModel');
+		$id = $this->session->userdata('logged_in')['id'];
+		$data['jumlah_kelas'] = $this->DetailModel->jumlah_kelas_per_siswa($id);
+
+		$this->load->view('home_view',$data);
 	}
 
 	public function admin()
