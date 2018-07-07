@@ -329,7 +329,13 @@
 						<div class="box-main active" data-img="img/pricing1.jpg">
 							<h4 class="white">Yoga Pilates</h4>
 							<h4 class="white regular light">$850.00 <span class="small-font">/ year</span></h4>
-							<a href="<?php echo site_url(); ?>/login/index"  data-target="#modal1" class="btn btn-white-fill">Login</a>
+							<?php if ($this->session->userdata('logged_in') == null): ?>
+						<li><a href="<?php echo site_url(); ?>/login/index" data-toggle="modal" class="btn btn-white-fill">Login</a></li>
+						<?php else: ?>
+						<li><a href="<?php echo site_url(); ?>/pesan/index" class="btn btn-white-fill">Pesan</a></li>
+
+					<?php endif ?>
+							<!-- <a href="<?php echo site_url(); ?>/login/index"  data-target="#modal1" class="btn btn-white-fill">Login</a> -->
 							<i class="info-icon icon_question"></i>
 						</div>
 						<div class="box-second active">

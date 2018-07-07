@@ -109,9 +109,7 @@
     <table class="table table-striped table-hover" id="table_id">
       <thead>
         <th>Hari</th>
-        <th>Tanggal</th>
         <th>Jam</th>
-        <th>Durasi</th>
         <th>Ruang</th>
         <th>Mapel</th>
         <th>Guru</th>
@@ -121,13 +119,11 @@
         <?php foreach ($jadwal_list as $key => $value):?>
         <tr>
           <td><?php echo $value['hari'] ?></td>
-          <td><?php echo $value['tanggal'] ?></td>
           <td><?php echo $value['jam'] ?></td>
-          <td><?php echo $value['durasi'] ?></td>
           <td><?php echo $value['no_ruang'] ?></td>
           <td><?php echo $value['nama_mapel'] ?></td>
           <td><?php echo $value['nama_guru'] ?></td>
-          <td><?php echo $value['fk_id_kelas'] ?></td>
+          <td><?php echo $value['nama_kelas'] ?></td>
         </tr>
       <?php endforeach ?>
       </tbody>
