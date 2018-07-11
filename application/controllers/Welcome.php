@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
         $this->dompdf->loadHtml($html);
         
         // (Optional) Setup the paper size and orientation
-        $this->dompdf->setPaper('A4', 'potrait');
+        $this->dompdf->setPaper('A10', 'potrait');
         
         // Render the HTML as PDF
         $this->dompdf->render();

@@ -10,34 +10,35 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <!------ Include the above in your HEAD tag ---------->
 </head>
-<body><br><br><br>
-
-
+<body>
   <div class="container">
     <div class="jumbotron">
       <?php echo form_open('Pesan/jadwal'); ?>
-      <center><h2>Cetak Bukti</h2><br>
+      <center><h2>Cetak Bukti</h2>
         <table border="0" >
           <?php foreach ($murid as $key => $val){ ?>
           <tr>
             <td>Nama</td>
+            <td>:</td>
             <td style="padding-left: 10px"><?php echo $val['nama_murid'] ?></td>
           </tr>
           <tr>
             <td>Kelas</td>
+            <td>:</td>
             <td style="padding-left: 10px"><?php echo $val['nama_kelas'] ?></td>
           </tr>
           <tr>
             <td>Mata Pelajaran</td>
+            <td>:</td>
             <td style="padding-left: 10px"><?php echo $val['nama_mapel'] ?></td>
           </tr>
           <tr>
             <td>Ruang</td>
+            <td>:</td>
             <td style="padding-left: 10px"><?php echo $val['no_ruang'] ?></td>
           </tr>
         <?php } ?>
         </table><br>
-        <a href="<?php echo site_url(); ?>/pesan/dompdf" type="button" class="btn btn-danger">Print Bukti</a>
       </center>
     </div>
   </div>

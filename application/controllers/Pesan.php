@@ -33,9 +33,34 @@ class Pesan extends CI_Controller {
 	public function cetak($idmapel)
 	{
 		$id=$this->session->userdata('logged_in')['id'];
+		$this->session->set_userdata('idmapel',$idmapel);
 		$this->load->model('MuridModel');	
 		$data['murid']=$this->MuridModel->getData($id,$idmapel);
 		$this->load->view('cetak_view',$data);
+	}
+
+	public function dompdf()
+	{
+		$id=$this->session->userdata('logged_in')['id'];
+		$idmapel=$this->session->idmapel;
+		$this->load->model('MuridModel');	
+		$data['murid']=$this->MuridModel->getData($id,$idmapel);
+		$this->load->view('print_view',$data);
+		$html = $this->output->get_output();
+        // Load pdf library
+        $this->load->library('pdf');
+        
+        // Load HTML content
+        $this->dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation
+        $this->dompdf->setPaper('A6', 'potrait');
+        
+        // Render the HTML as PDF
+        $this->dompdf->render();
+        
+        // Output the generated PDF (1 = download and 0 = preview)
+        $this->dompdf->stream("welcome883737.pdf", array("Attachment"=>false));	
 	}
 }
 
