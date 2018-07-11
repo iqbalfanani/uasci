@@ -26,6 +26,7 @@
         <th>Ruang</th>
         <th>Mapel</th>
         <th>Guru</th>
+        <th>Pilih</th>
       </thead>
       <tbody>
         <?php foreach ($jadwal as $key => $value):?>
@@ -35,12 +36,13 @@
           <td><?php echo $value['no_ruang'] ?></td>
           <td><?php echo $value['nama_mapel'] ?></td>
           <td><?php echo $value['nama_guru'] ?></td>
+          <td><a href="<?php echo site_url('Pesan/kelas/'.$id_kelas.'/'.$value['id']) ?>" class="btn btn-success">Pilih</a></td>
         </tr>
       <?php endforeach ?>
       </tbody>
     </table>
     <a href="<?php echo site_url(); ?>/pesan/index" type="button" class="btn btn-danger">Kembali</a>
-    <a href="<?php echo site_url('Pesan/kelas/'.$id_kelas) ?>" class="btn btn-success">Pilih</a>
+    
   </div>
 </div>
       <?php echo form_close(); ?>

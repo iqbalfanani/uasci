@@ -3,11 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MuridModel extends CI_Model {
 
-	public function getData()
+	public function getData($id,$idmapel)
 	{
 		$this->db->select('*');
 		$this->db->from("murid");
-		
+		$this->db->join("detail_kelas","murid.id=detail_kelas.fk_id_murid");
+		$this->db->join("kelas","kelas.id=detail_kelas.fk_id_kelas");
+		$this->db->join("jadwal","jadwal.fk_id_kelas=kelas.id");
+		$this->db->join("mapel","mapel.id=jadwal.fk_id_mapel");
+		$this->db->join("ruang","ruang.id=jadwal.fk_id_ruang");
+		$this->db->where("murid.id",$id);
+		$this->db->where("mapel.id",$idmapel);
 		$query = $this->db->get();
 		return $query->result_array();
 	}

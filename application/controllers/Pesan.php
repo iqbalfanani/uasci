@@ -13,7 +13,6 @@ class Pesan extends CI_Controller {
 	public function jadwal()
 	{
 		$this->load->model('JadwalModel');
-
 		$kelas = $this->input->post('fk_id_kelas');
 		$data['id_kelas'] = $kelas;
 		$data['kelas'] = $this->db->where('id',$kelas)->get('kelas')->row(0)->nama_kelas;
@@ -21,14 +20,22 @@ class Pesan extends CI_Controller {
 		$this->load->view('jadwal_view',$data);
 	}
 
-	public function kelas($kelas)
+	public function kelas($kelas,$idmapel)
 	{
 		$set = array(
 			'fk_id_kelas' => $kelas,
 			'fk_id_murid' => $this->session->userdata('logged_in')['id'],
 		);
 		$this->db->insert('detail_kelas',$set);
-		redirect('','refresh');
+		redirect('Pesan/cetak/'.$idmapel,'refresh');
+	}
+
+	public function cetak($idmapel)
+	{
+		$id=$this->session->userdata('logged_in')['id'];
+		$this->load->model('MuridModel');	
+		$data['murid']=$this->MuridModel->getData($id,$idmapel);
+		$this->load->view('cetak_view',$data);
 	}
 }
 
