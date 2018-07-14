@@ -18,11 +18,12 @@ class MuridModel extends CI_Model {
 		return $query->result_array();
 	}
 	
-	public function getDataWhereId($id)
+	public function getDataWhereId($id='')
 	{
 		$this->db->select('*');
 		$this->db->from("murid");
-		$this->db->where('id',$id);
+		if($id!='')
+		{ $this->db->where('id',$id); }
 		return $this->db->get()->result_array();
 	}
 

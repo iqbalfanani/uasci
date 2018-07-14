@@ -6,7 +6,7 @@ class Murid extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('MuridModel');
-		$data['murid_list'] = $this->MuridModel->getData();
+		$data['murid_list'] = $this->MuridModel->getDataWhereId();
 		$this->load->view('murid_view', $data);
 	}
 	public function insert()

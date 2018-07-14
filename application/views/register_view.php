@@ -14,14 +14,14 @@
 
 
 <div class="container">
-  <?php echo form_open_multipart(''); ?>
+  <?php echo form_open_multipart('Login/register'); ?>
     <div class="panel panel-default">
       <div class="panel-heading"style="background-color:  #1E8BC3;">
         <center><h3 class="panel-title">Tambah Murid Baru</h3></center>
       </div>
       <div class="panel-body">
       <div class="form-group">
-        <label class="col-md-4 control-label" for="nama">Nama Lengkap</label>  
+        <label class="col-md-4 control-label" for="nama">Nama Lengkap</label>
         <div class="col-md-5">
         <input id="nama" name="nama_murid" type="text" placeholder="Nama Lengkap Anda" class="form-control input-md" required="">
         </div>
@@ -114,11 +114,13 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="confirmation"></label>
         <div class="col-md-5">
-          <button id="confirmation" class="btn btn-primary">Submit</button>
+          <button id="confirmation" type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
-      <?php echo form_close(); ?>
+      
       </div>
+    </div>
+      <?php echo form_close(); ?>
 </div>
 </body>
 </html>
