@@ -6,7 +6,7 @@
   <title></title>
   <link rel="stylesheet" href="">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/css-homeAdmin.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 <!------ Include the above in your HEAD tag ---------->
 </head>
@@ -28,7 +28,6 @@
             <li class="active">Welcome, <?php echo $this->session->userdata('logged_in')['username']; ?></a></li>
             <li><a href="<?php echo base_url() ?>index.php/Login/logout">Logout</a></li>
           </ul>
-          
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -68,70 +67,88 @@
           </div>
       </div>
       <div class="col-md-9">
-          <div class="panel">
-         <div class="panel-body">
-               <div class="panel-heading" style="background-color:  #1E8BC3; ">
-    <h3 class="panel-title" >GoLas Overview</h3>
-  </div>
-  <div class="panel-body">
-   <div class="col-md-3">
-     <div class="well dash-box">
-       <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $jumlah_guru ?></h2>
-       <h4>Guru</h4>
-     </div>
-   </div>
-   <div class="col-md-3">
-     <div class="well dash-box">
-       <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo $jumlah_kelas ?></h2>
-       <h4>Kelas</h4>
-     </div>
-   </div>
-   <div class="col-md-3">
-     <div class="well dash-box">
-       <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?php echo $jumlah_mapel ?></h2>
-       <h4>Mata Pelajaran</h4>
-     </div>
-   </div>
-   <div class="col-md-3">
-     <div class="well dash-box">
-       <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> <?php echo $jumlah_murid ?></h2>
-       <h4>Murid</h4>
-     </div>
-   </div>
-  </div>
-</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading"style="background-color:  #1E8BC3;">
+		    <h3 class="panel-title">Tambah Jadwal Kelas</h3>
+		  </div>
+		  <div class="panel-body">
+		  	<?php echo validation_errors(); ?>
+		  	<?php echo form_open_multipart('Home/insert'); ?>
+		  	<!-- Text input-->
+		  	<div class="form-group">
+			  <label class="col-md-4 control-label" for="hari">Hari</label>  
+			  <div class="col-md-5">
+			  	<input id="hari" name="hari" type="text"  placeholder="Masukkan Hari" class="form-control input-md">
+			  </div>
+			</div>
+			<!-- Text input-->
+		  	<div class="form-group">
+			  <label class="col-md-4 control-label" for="jam">Jam</label>  
+			  <div class="col-md-5">
+			  <input id="jam" name="jam" type="text"placeholder="Masukkan Jam" class="form-control input-md">
+			  </div>
+			</div>
+			<!-- Drop Down input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_ruang">Ruang</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_ruang" id="fk_id_ruang" class="form-control">
+					<?php foreach ($getRelasiRuang as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['no_ruang'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
 
-<div class="panel panel-default">
-  <div class="panel-heading"style="background-color:  #1E8BC3;">
-    <h3 class="panel-title">Jadwal Kelas</h3>
-  </div>
-  <div class="panel-body">
-    <a href="<?php echo base_url() ?>index.php/Home/insert" class="btn btn-primary my-3">Tambah</a> <br><br>
-    <table class="table table-striped table-hover" id="table_id">
-      <thead>
-        <th>Hari</th>
-        <th>Jam</th>
-        <th>Ruang</th>
-        <th>Mapel</th>
-        <th>Guru</th>
-        <th>Kelas</th>
-      </thead>
-      <tbody>
-        <?php foreach ($jadwal_list as $key => $value):?>
-        <tr>
-          <td><?php echo $value['hari'] ?></td>
-          <td><?php echo $value['jam'] ?></td>
-          <td><?php echo $value['no_ruang'] ?></td>
-          <td><?php echo $value['nama_mapel'] ?></td>
-          <td><?php echo $value['nama_guru'] ?></td>
-          <td><?php echo $value['nama_kelas'] ?></td>
-        </tr>
-      <?php endforeach ?>
-      </tbody>
-    </table>
+			<!-- Drop Down input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_murid">Nama Guru</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_guru" id="fk_id_guru" class="form-control">
+					<?php foreach ($getRelasiGuru as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['nama_guru'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
 
-  </div>
-</div>
+			<!-- Drop Down input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_mapel">Mapel</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_mapel" id="fk_id_mapel" class="form-control">
+					<?php foreach ($getRelasiMapel as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['nama_mapel'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
+
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="fk_id_ruang">Kelas</label>  
+			  <div class="col-md-5">
+			  <select name="fk_id_kelas" id="fk_id_kelas" class="form-control">
+					<?php foreach ($getRelasiKelas as $value): ?>
+						<option value="<?php echo $value['id'] ?>"><?= $value['nama_kelas'] ?></option>
+					<?php endforeach ?>
+				</select>
+			    
+			  </div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="confirmation"></label>
+			  <div class="col-md-5">
+			    <button id="confirmation" class="btn btn-primary">Submit</button>
+			  </div>
+			</div>
+			<?php echo form_close(); ?>
+		  </div>
+		</div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

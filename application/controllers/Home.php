@@ -23,6 +23,29 @@ class Home extends CI_Controller {
 		$this->load->view('home_admin', $data);
 	}
 
+	public function insert()
+	{
+		$this->load->library('form_validation');
+		$this->load->model('JadwalModel');
+		$this->form_validation->set_rules('hari', 'Hari', 'trim|required');
+		$this->form_validation->set_rules('jam', 'Jam', 'trim|required');
+		$this->form_validation->set_rules('fk_id_ruang', 'Ruang', 'trim|required');
+		$this->form_validation->set_rules('fk_id_mapel', 'fk_id_mapel', 'trim|required');
+		$this->form_validation->set_rules('fk_id_guru', 'fk_id_guru', 'trim|required');
+		$this->form_validation->set_rules('fk_id_kelas', 'fk_id_kelas', 'trim|required');
+
+		$data['getRelasiRuang'] = $this->JadwalModel->getRelasiRuang();
+		$data['getRelasiMapel'] = $this->JadwalModel->getRelasiMapel();
+		$data['getRelasiGuru'] = $this->JadwalModel->getRelasiGuru();
+		$data['getRelasiKelas'] = $this->JadwalModel->getRelasiKelas();
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('tambahJadwal_view', $data);
+		}else{
+			$this->JadwalModel->insertData();
+			redirect('home/admin');
+		}
+
+	}
 	
 }
 

@@ -42,6 +42,32 @@ class JadwalModel extends CI_Model {
 		return $query->result_array();
 
 	}
+
+	public function InsertData()
+	{
+		$data = $this->input->post();
+		$this->db->insert('jadwal', $data);
+	}
+
+	public function getRelasiRuang()
+	{
+		return $this->db->get('ruang')->result_array();
+	}
+
+	public function getRelasiMapel()
+	{
+		return $this->db->get('mapel')->result_array();
+	}
+
+	public function getRelasiGuru()
+	{
+		return $this->db->get('guru')->result_array();
+	}
+
+	public function getRelasiKelas()
+	{
+		return $this->db->get('kelas')->result_array();
+	}
 }
 
 /* End of file kelasModel.php */
