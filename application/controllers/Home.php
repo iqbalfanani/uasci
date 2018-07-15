@@ -66,7 +66,7 @@ class Home extends CI_Controller {
 			$this->load->view('updateJadwal_view', $data);
 		} else {
 			$this->JadwalModel->updateData($id);
-			redirect('Home');
+			redirect('Home/admin');
 		}
 	}
 
