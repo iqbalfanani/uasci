@@ -46,6 +46,36 @@ class Home extends CI_Controller {
 		}
 
 	}
+
+	public function update($id)
+	{
+		$this->load->library('form_validation');
+		$this->load->model('JadwalModel');
+		$this->form_validation->set_rules('fk_id_ruang', 'Ruang', 'trim|required');
+		$this->form_validation->set_rules('fk_id_guru', 'Nama Guru', 'trim|required');
+		$this->form_validation->set_rules('fk_id_mapel', 'Mapel', 'trim|required');
+		$this->form_validation->set_rules('fk_id_kelas', 'Kelas', 'trim|required');
+
+		$data['getRelasiRuang'] = $this->JadwalModel->getRelasiRuang();
+		$data['getRelasiGuru'] = $this->JadwalModel->getRelasiGuru();
+		$data['getRelasiMapel'] = $this->JadwalModel->getRelasiMapel();
+		$data['getRelasiKelas'] = $this->JadwalModel->getRelasiKelas();
+		$data['getData'] = $this->JadwalModel->getDataWhereId($id)[0];
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('updateJadwal_view', $data);
+		} else {
+			$this->JadwalModel->updateData($id);
+			redirect('Home');
+		}
+	}
+
+	public function delete($id)
+	{
+		$this->load->model('JadwalModel');
+		$this->JadwalModel->hapusData($id);
+		redirect('Home/admin');
+	}
 	
 }
 

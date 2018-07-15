@@ -49,6 +49,31 @@ class JadwalModel extends CI_Model {
 		$this->db->insert('jadwal', $data);
 	}
 
+	public function updateData($id)
+	{
+		$data = $this->input->post();
+		$this->db->where('id', $id);
+		if ($this->db->update("jadwal", $data)) {
+			return "Berhasil";
+		}
+	}
+
+	public function hapusData($id)
+	{
+		$this->db->where('id', $id);
+		if ($this->db->delete("jadwal")) {
+			return "Data berhasil di hapus";
+		}
+	}
+
+	public function getDataWhereId($id)
+	{
+		$this->db->select('*');
+		$this->db->from("jadwal");
+		$this->db->where('id', $id);
+		return $this->db->get()->result_array();
+	}
+
 	public function getRelasiRuang()
 	{
 		return $this->db->get('ruang')->result_array();
