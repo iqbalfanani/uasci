@@ -16,7 +16,7 @@ class MapelModel extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from("mapel");
-		$this->db->where('id',$id);
+		$this->db->where('id_mapel',$id);
 		return $this->db->get()->result_array();
 	}
 
@@ -29,7 +29,7 @@ class MapelModel extends CI_Model {
 	public function updateData($id)	
 	{
 		$data = $this->input->post();
-		$this->db->where('id',$id);
+		$this->db->where('id_mapel',$id);
 		if($this->db->update("mapel",$data)){
 			return "Berhasil";
 		}
@@ -37,7 +37,7 @@ class MapelModel extends CI_Model {
 
 	public function hapusData($id)
 	{
-		$this->db->where('id',$id);
+		$this->db->where('id_mapel',$id);
 		if($this->db->delete("mapel")){
 			return "Berhasil";
 		}

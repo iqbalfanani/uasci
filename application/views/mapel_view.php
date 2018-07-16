@@ -83,11 +83,11 @@
           <tbody>
             <?php foreach ($mapel_list as $key => $value):?>
             <tr>
-              <td><?php echo $value['id'] ?></td>
+              <td><?php echo $value['id_mapel'] ?></td>
               <td><?php echo $value['nama_mapel'] ?></td>
               <td>
-		          	<a href="<?php echo base_url() ?>index.php/Mapel/update/<?php echo $value['id'] ?>" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span>
-                <a href="<?php echo base_url() ?>index.php/Mapel/delete/<?php echo $value['id'] ?>"class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span>
+		          	<a href="<?php echo base_url() ?>index.php/Mapel/update/<?php echo $value['id_mapel'] ?>" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-pencil"></span>
+                <a href="<?php echo base_url() ?>index.php/Mapel/delete/<?php echo $value['id_mapel'] ?>"class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span>
   		          </td>
 		        </tr>
 		      <?php endforeach ?>

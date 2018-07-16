@@ -8,7 +8,7 @@ class JadwalModel extends CI_Model {
 		$this->db->select('jadwal.*,ruang.no_ruang, mapel.nama_mapel,guru.nama_guru, kelas.nama_kelas');
 		$this->db->from('jadwal');
 		$this->db->join('ruang','jadwal.fk_id_ruang=ruang.id');
-		$this->db->join('mapel','jadwal.fk_id_mapel=mapel.id');
+		$this->db->join('mapel','jadwal.fk_id_mapel=mapel.id_mapel');
 		$this->db->join('guru','jadwal.fk_id_guru=guru.id');
 		$this->db->join('kelas','jadwal.fk_id_kelas=kelas.id');
 		$query = $this->db->get();
@@ -17,10 +17,10 @@ class JadwalModel extends CI_Model {
 	}
 	public function getDataJadwalWhereKelas($id) 
 	{
-		$this->db->select('jadwal.*,ruang.no_ruang, mapel.nama_mapel,guru.nama_guru, kelas.nama_kelas');
+		$this->db->select('*');
 		$this->db->from('jadwal');
 		$this->db->join('ruang','jadwal.fk_id_ruang=ruang.id');
-		$this->db->join('mapel','jadwal.fk_id_mapel=mapel.id');
+		$this->db->join('mapel','jadwal.fk_id_mapel=mapel.id_mapel');
 		$this->db->join('guru','jadwal.fk_id_guru=guru.id');
 		$this->db->join('kelas','jadwal.fk_id_kelas=kelas.id');
 		$this->db->where('fk_id_kelas',$id);
@@ -34,7 +34,7 @@ class JadwalModel extends CI_Model {
 		$this->db->select('jadwal.*,ruang.no_ruang, mapel.nama_mapel,guru.nama_guru, kelas.nama_kelas');
 		$this->db->from('jadwal');
 		$this->db->join('ruang','jadwal.fk_id_ruang=ruang.id');
-		$this->db->join('mapel','jadwal.fk_id_mapel=mapel.id');
+		$this->db->join('mapel','jadwal.fk_id_mapel=mapel.id_mapel');
 		$this->db->join('guru','jadwal.fk_id_guru=guru.id');
 		$this->db->join('kelas','jadwal.fk_id_kelas=kelas.id');
 		$this->db->where('fk_id_kelas',$id);

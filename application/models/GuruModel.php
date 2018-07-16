@@ -7,7 +7,7 @@ class GuruModel extends CI_Model {
 	{
 		$this->db->select('guru.*,mapel.nama_mapel');
 		$this->db->from('guru');
-		$this->db->join('mapel','guru.fk_id_mapel=mapel.id');
+		$this->db->join('mapel','guru.fk_id_mapel=mapel.id_mapel');
 		$query = $this->db->get();
 		return $query->result_array();
 

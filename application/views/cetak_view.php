@@ -35,6 +35,7 @@
             <td>Ruang</td>
             <td style="padding-left: 10px"><?php echo $val['no_ruang'] ?></td>
           </tr>
+          <tr><td></td><td></td></tr>
         <?php } ?>
         </table><br>
         <a href="<?php echo site_url(); ?>/pesan/dompdf" type="button" class="btn btn-danger">Print Bukti</a>

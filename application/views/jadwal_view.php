@@ -36,7 +36,7 @@
           <td><?php echo $value['no_ruang'] ?></td>
           <td><?php echo $value['nama_mapel'] ?></td>
           <td><?php echo $value['nama_guru'] ?></td>
-          <td><a href="<?php echo site_url('Pesan/kelas/'.$id_kelas.'/'.$value['id']) ?>" class="btn btn-success">Pilih</a></td>
+          <td><a href="<?php echo site_url('Pesan/kelas/'.$id_kelas.'/'.$value['id_mapel']) ?>" class="btn btn-success">Pilih</a></td>
         </tr>
       <?php endforeach ?>
       </tbody>

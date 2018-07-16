@@ -120,7 +120,7 @@
 			  <div class="col-md-5">
 			  <select name="fk_id_mapel" id="fk_id_mapel" class="form-control">
 					<?php foreach ($getRelasiMapel as $value): ?>
-						<option value="<?php echo $value['id'] ?>"><?= $value['nama_mapel'] ?></option>
+						<option value="<?php echo $value['id_mapel'] ?>"><?= $value['nama_mapel'] ?></option>
 					<?php endforeach ?>
 				</select>
 			    

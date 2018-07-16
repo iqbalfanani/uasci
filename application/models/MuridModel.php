@@ -10,10 +10,10 @@ class MuridModel extends CI_Model {
 		$this->db->join("detail_kelas","murid.id=detail_kelas.fk_id_murid");
 		$this->db->join("kelas","kelas.id=detail_kelas.fk_id_kelas");
 		$this->db->join("jadwal","jadwal.fk_id_kelas=kelas.id");
-		$this->db->join("mapel","mapel.id=jadwal.fk_id_mapel");
+		$this->db->join("mapel","mapel.id_mapel=jadwal.fk_id_mapel");
 		$this->db->join("ruang","ruang.id=jadwal.fk_id_ruang");
 		$this->db->where("murid.id",$id);
-		$this->db->where("mapel.id",$idmapel);
+		$this->db->where("mapel.id_mapel",$idmapel);
 		$query = $this->db->get();
 		return $query->result_array();
 	}
